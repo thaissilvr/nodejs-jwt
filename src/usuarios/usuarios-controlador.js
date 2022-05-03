@@ -28,7 +28,7 @@ module.exports = {
   },
 
   login: (req, res) => {
-    res.status(204).send
+    res.status(204).send();
   },
 
   lista: async (req, res) => {
