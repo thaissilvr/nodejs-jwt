@@ -8,9 +8,15 @@ module.exports = app => {
     .post(middlewaresAutenticacao.local, usuariosControlador.login)
 
   app
+    .route("/usuario/logout")
+    .get(middlewaresAutenticacao.bearer, usuariosControlador.logout)
+
+  app
     .route('/usuario')
     .post(usuariosControlador.adiciona)
     .get(usuariosControlador.lista);
 
-  app.route('/usuario/:id').delete(passport.authenticate('bearer', { session : false }),usuariosControlador.deleta);
+  app
+    .route('/usuario/:id')
+    .delete(passport.authenticate('bearer', { session: false }), usuariosControlador.deleta);
 };
